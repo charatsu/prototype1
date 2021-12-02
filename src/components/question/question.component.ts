@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CTPLmodel, CTPLview, PAattribute, PAmodel, PAview } from '../../assets/constant';
 import { PAComponent } from '../pa/pa.component';
@@ -19,6 +19,7 @@ import { MultilineTextLayoutComponent } from '../products/multiline-text.layout.
 import { TextNumberLayoutComponent } from '../products/text-number.layout.component';
 import { LabelLayoutComponent } from '../products/label.layout.component';
 import { LayoutDynamicSetOfOptionsControlComponent } from '../products/layout-control-dynamic-options.component';
+import { JsonSchemaFormComponent } from '@ajsf/core';
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -28,7 +29,8 @@ export class QuestionComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private saleService: SaleService,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private router: Router) { }
   html = '';
   test = '<p>aaaa</p>';
   productId = '';
@@ -42,6 +44,7 @@ export class QuestionComponent implements OnInit {
     startDate: moment().toISOString(),
     endDate: moment().add(1, 'day').add(1, 'year').toISOString()
   };
+  @ViewChild('jsonForm', {read: JsonSchemaFormComponent, static: true}) jsonForm: JsonSchemaFormComponent;
   id: any = '';
   quote: any = null;
   attribute: any = {};
@@ -77,11 +80,13 @@ export class QuestionComponent implements OnInit {
     this.Period[att] = value.value;
   }
   onChange(obj: any) {
-    console.log(obj);
     this.model[obj.att] = obj.value;
   }
   onSubmit = async () => {
-    let data = this.model;
+    // console.log(this.model);
+    // console.log(this.jsonForm.value);
+    
+    let data = this.jsonForm.value;
     const period = { start: this.Period.startDate, end: this.Period.endDate };
     let newQuote = this.quote;
     if (!this.quote) {
@@ -103,7 +108,7 @@ export class QuestionComponent implements OnInit {
         }
       }
     });
-    if (newQuote.data.attributes.validationErrors.length > 0) {
+    if (newQuote.data.attributes?.validationErrors?.length > 0) {
       let message = ''
       newQuote.data.attributes.validationErrors.forEach((error: any) => {
         message += error.propertyName + ': ' + error.message + '\n'
@@ -131,6 +136,7 @@ export class QuestionComponent implements OnInit {
 
     let priceQuote = await this.waitForCalculate(6, 1000, newQuote.data.id);
     this.quote = priceQuote;
+    this.router.navigate(["/review"], {queryParams: { id:this.quote.data.id}})
     // navigation.navigate('Persnal_Detail_Page', {
     //   quoteId: newQuote.data.id,
     //   quoteVersion: priceQuote.data.attributes.version,
@@ -165,6 +171,13 @@ export class QuestionComponent implements OnInit {
       currencyCode: 'SGD',
       answers: {},
     };
+    this.attribute = {
+      salesChannel: productDetail.data.relationships.salesChannel.data[0].id,
+      salesChannelName: "SalesLab",
+      productVersionId: versionId,
+      productName: productDetail.data.attributes.name,
+      productId: this.productId  
+    }
     let productVersions = await this.productService.getProductVersionDetail(versionId);
     let jsonSchema = JSON.parse(productVersions.data.attributes.salesProcessDefinition.steps[1].schema);
     this.schema = jsonSchema.properties;

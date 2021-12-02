@@ -32,6 +32,7 @@ import { ProductLookupValidationService } from 'src/services/product-lookup-vali
 import { LOOKUP_VALIDATION_SERVICE_TOKEN } from 'src/components/products/interfaces/token-define';
 import { HttpClientModule } from '@angular/common/http';
 import { JsonApiModule } from 'angular2-jsonapi';
+import { CatalogComponent } from './catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { JsonApiModule } from 'angular2-jsonapi';
     TextLayoutComponent,
     YesNoLayoutComponent,
     LayoutDynamicSetOfOptionsControlComponent,
+    CatalogComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   imports: [

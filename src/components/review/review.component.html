@@ -13,7 +13,7 @@
             <h5>NRIC / Passport</h5>
         </div>
         <div class="col">
-            <h6>{{personalDetail.Data.SSN ?? ''}}</h6>
+            <h6>{{personalDetail.Data.SSN ?? 'S2175802Z'}}</h6>
         </div>
     </div>
     <div class="row">
@@ -37,7 +37,7 @@
             <h5>E-mail Address</h5>
         </div>
         <div class="col">
-            <h6>{{personalDetail.Data.Emails[0].Number}}</h6>
+            <h6>{{personalDetail.Data.Emails[0].Address}}</h6>
         </div>
     </div>
     <div class="row">
@@ -45,7 +45,8 @@
             <h5>Premium</h5>
         </div>
         <div class="col">
-            <h6></h6>
+            <h6>{{quote.data.attributes.annualPremium.total.formattedAmount}}</h6>
         </div>
     </div>
+    <button class="btn btn-primary w-25 align-self-center" (click)="viewDocument()">Review Document</button>
 </div>
