@@ -35,3 +35,13 @@ label.legend{
 .expandable label.legend, .expanded label.legend{
   font-size: 1rem;
 }
+
+.btn-icon-send{
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.btn-icon-send:hover{
+  /*color: #007bff;*/
+  background-color: #007bff;
+  color: white;
+}
