@@ -5,7 +5,7 @@
     </label>
     <select class="form-control" [formControl]="formControl" id="{{stepItem.tag}}" [loading]="stepItem.sourceLookup === []"
                loadingText="{{'MODULE SALES LOADING STATUS'}}">
-        <option *ngFor="let item of stepItem.sourceLookup" value="item?.value">
+        <option *ngFor="let item of stepItem.sourceLookup" [value]="item?.value">
             {{item?.display}}
         </option>
     </select>
