@@ -1,11 +1,11 @@
-<div class="form-group" *ngIf="isShow">
-  <label for="{{stepItem.tag}}">
+<div class="form-group c-form-group" *ngIf="isShow">
+  <label class="c-form-label" for="{{stepItem.tag}}">
     {{stepItem.title}}
-    <span *ngIf="isRequired">*</span>
+    <span class="field-required" *ngIf="isRequired">*</span>
   </label>
   <div class="input-group {{addonClass}}">
     <i *ngIf="unit.length > 0" class="addon">{{unit}}</i>
-    <input 
+    <input
       *ngIf="integerOnly"
       type="number"
       placeholder="{{'MODULE SALES ENTER VALUE'}} {{stepItem.title}}"

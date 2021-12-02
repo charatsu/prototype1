@@ -1,2 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~ng-pick-datetime/assets/style/picker.min.css";
+
+body{
+  /*background-color: #d8d8d8;*/
+}
+
+label.legend{
+  font-size: calc(1.275rem + .3vw);
+  margin-bottom: 12px;
+  color: #17a2b8;
+}
+
+.form-flex-row{
+  margin-left: -8px;
+  margin-right: -8px;
+}
+.form-flex-item{
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.c-form-group .btn-input-icon{
+  padding: 0 12px;
+  height: 100%;
+}
+
+.c-form-group .c-form-label{
+  font-weight: 600;
+}
+.c-form-group .c-form-label span.field-required{
+  color: red;
+}

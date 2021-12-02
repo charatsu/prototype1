@@ -1,8 +1,8 @@
 <div [formGroup]="formControl">
-  <div class="form-group">
-    <label for="startDate">
+  <div class="form-group c-form-group">
+    <label class="c-form-label" for="startDate">
       {{'MODULE SALES START DATE'}}
-      <span>*</span>
+      <span class="field-required">*</span>
     </label>
     <div class="input-group input-calendar">
       <input [owlDateTime]="dtStartDate" [owlDateTimeTrigger]="dtStartDate" placeholder="Date Time" class="form-control"
@@ -11,8 +11,8 @@
              #startDate>
       <div class="input-group-append">
         <span class="input-group-text p-0">
-          <button class="btn btn-transparent" (click)="startDate.click()">
-            <i class="fal fa-calendar"></i>
+          <button class="btn btn-input-icon" (click)="startDate.click()">
+            <i class="fa fa-calendar"></i>
           </button>
         </span>
       </div>
@@ -27,10 +27,10 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="endDate">
+  <div class="form-group c-form-group">
+    <label class="c-form-label" for="endDate">
       {{'MODULE SALES END DATE'}}
-      <span>*</span>
+      <span class="field-required">*</span>
     </label>
     <div class="input-group input-calendar">
       <input [owlDateTime]="dtEndDate" [owlDateTimeTrigger]="dtEndDate" placeholder="Date Time"
@@ -39,8 +39,8 @@
              id="endDate" #endDate>
       <div class="input-group-append">
         <span class="input-group-text p-0">
-          <button class="btn btn-transparent" (click)="endDate.click()">
-            <i class="fal fa-calendar"></i>
+          <button class="btn btn-input-icon" (click)="endDate.click()">
+            <i class="fa fa-calendar"></i>
           </button>
         </span>
       </div>

@@ -1,9 +1,9 @@
-<div class="form-group" *ngIf="isShow">
-    <label for="{{stepItem.tag}}">
+<div class="form-group c-form-group" *ngIf="isShow">
+    <label class="c-form-label" for="{{stepItem.tag}}">
         {{stepItem.title}}
-        <span *ngIf="isRequired">*</span>
+        <span class="field-required" *ngIf="isRequired">*</span>
     </label>
-    <select [formControl]="formControl" id="{{stepItem.tag}}" [loading]="stepItem.sourceLookup === []"
+    <select class="form-control" [formControl]="formControl" id="{{stepItem.tag}}" [loading]="stepItem.sourceLookup === []"
                loadingText="{{'MODULE SALES LOADING STATUS'}}">
         <option *ngFor="let item of stepItem.sourceLookup" value="item?.value">
             {{item?.display}}
