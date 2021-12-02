@@ -41,14 +41,14 @@ export class SaleService {
         })
     }
 
-    completeQuote(data: any) {
+    completeQuote(data: any): any {
         return new Promise(async(res) => {
             let quoteDetail = await this.saleClient.completeQuote(data);
             res(quoteDetail);    
         })
     }
 
-    acceptanceQuote(data: any) {
+    acceptanceQuote(data: any): any {
         return new Promise(async(res) => {
             let quoteDetail = await this.saleClient.acceptanceQuote(data);
             res(quoteDetail);    

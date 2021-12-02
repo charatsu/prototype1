@@ -1,11 +1,11 @@
 <div class="text-center">
-    <h3>Review</h3>
+    <h3>Personal Detail</h3>
     <div class="row">
         <div class="col">
             <h5>Full Name</h5>
         </div>
         <div class="col">
-            <h6>{{personalDetail.Data.FullName}}</h6>
+            <h6>{{personalDetail?.Data.FullName}}</h6>
         </div>
     </div>
     <div class="row">
@@ -13,7 +13,7 @@
             <h5>NRIC / Passport</h5>
         </div>
         <div class="col">
-            <h6>{{personalDetail.Data.SSN ?? 'S2175802Z'}}</h6>
+            <h6>{{personalDetail?.Data.SSN ?? 'S2175802Z'}}</h6>
         </div>
     </div>
     <div class="row">
@@ -21,7 +21,7 @@
             <h5>Place of Residence</h5>
         </div>
         <div class="col">
-            <h6>{{personalDetail.Data.Country}}</h6>
+            <h6>{{personalDetail?.Data.Country}}</h6>
         </div>
     </div>
     <div class="row">
@@ -29,7 +29,7 @@
             <h5>Mobile Number</h5>
         </div>
         <div class="col">
-            <h6>{{personalDetail.Data.Phones[0].Number}}</h6>
+            <h6>{{personalDetail?.Data.Phones[0].Number}}</h6>
         </div>
     </div>
     <div class="row">
@@ -37,16 +37,8 @@
             <h5>E-mail Address</h5>
         </div>
         <div class="col">
-            <h6>{{personalDetail.Data.Emails[0].Address}}</h6>
+            <h6>{{personalDetail?.Data.Emails[0].Address}}</h6>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <h5>Premium</h5>
-        </div>
-        <div class="col">
-            <h6>{{quote.data.attributes.annualPremium.total.formattedAmount}}</h6>
-        </div>
-    </div>
-    <button class="btn btn-primary w-25 align-self-center" (click)="viewDocument()">Review Document</button>
+    <button class="btn btn-primary w-25 align-self-center" (click)="next()">Next</button>
 </div>

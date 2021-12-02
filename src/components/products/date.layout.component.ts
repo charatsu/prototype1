@@ -55,7 +55,7 @@ export class DateLayoutComponent extends ProductLayoutControl implements OnInit 
   onDateChanged(value: any, emitChange?: any): void {
     if (value) {
       this.dateModel = value != null ? new Date(value) : null;
-      this.formControl.setValue(moment(this.dateModel).toDate());
+      this.formControl.setValue(moment(this.dateModel).toISOString());
     } else {
       this.formControl.setValue(null);
       this.dateModel = null;

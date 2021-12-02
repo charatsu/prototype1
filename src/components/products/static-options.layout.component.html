@@ -14,7 +14,7 @@
   </div>
   <div *ngIf="formControl?.invalid && (formControl?.dirty || formControl?.touched)" class="invalid-feedback d-block">
     <div *ngIf="formControl?.errors.required">
-      {{stepItem.title}} {{'MODULE SALES IS REQUIRED'}}
+      {{stepItem.title}} {{'is required'}}
     </div>
     <div *ngIf="formControl.errors.validationMessage">
       {{formControl.errors.validationMessage}}

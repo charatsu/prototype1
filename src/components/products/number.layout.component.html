@@ -8,7 +8,7 @@
     <input
       *ngIf="integerOnly"
       type="number"
-      placeholder="{{'MODULE SALES ENTER VALUE'}} {{stepItem.title}}"
+      placeholder="{{'Enter value'}} {{stepItem.title}}"
       class="form-control"
       id="{{stepItem.tag}}"
       [formControl]="formControl"
@@ -17,17 +17,17 @@
     <input
       *ngIf="!integerOnly"
       type="number"
-      placeholder="{{'MODULE SALES ENTER VALUE'}} {{stepItem.title}}"
+      placeholder="{{'Enter value'}} {{stepItem.title}}"
       class="form-control"
       id="{{stepItem.tag}}"
       [formControl]="formControl">
   </div>
   <div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)" class="invalid-feedback d-block">
     <div *ngIf="formControl.errors.required">
-      {{stepItem.title}} {{'MODULE SALES IS REQUIRED'}}
+      {{stepItem.title}} {{'is required'}}
     </div>
     <div *ngIf="formControl.errors.min || formControl.errors.max">
-      {{stepItem.title}} {{'MODULE SALES IS OUT OF RANGE'}}
+      {{stepItem.title}} {{'is out of range'}}
     </div>
     <div *ngIf="formControl.errors.validationMessage">
       {{formControl.errors.validationMessage}}

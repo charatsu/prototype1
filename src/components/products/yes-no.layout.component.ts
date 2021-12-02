@@ -25,9 +25,9 @@ export class YesNoLayoutComponent extends ProductLayoutControl implements OnInit
     this.jsf.initializeControl(this);
 
     this.options = [
-      { value: null, displayValue: 'MODULE SALES CONTROL OPTIONS PLEASE SELECT'},
-      { value: true, displayValue: 'MODULE SALES CONTROL OPTIONS YES' },
-      { value: false, displayValue: 'MODULE SALES CONTROL OPTIONS NO' }
+      { value: null, displayValue: 'Please Select'},
+      { value: true, displayValue: 'Yes' },
+      { value: false, displayValue: 'No' }
     ];
 
     // TODO: do required dropdown validation, i.e. Please Select not allowed

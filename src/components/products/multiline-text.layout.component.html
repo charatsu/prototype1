@@ -4,15 +4,15 @@
     <span class="field-required" *ngIf="isRequired">*</span>
   </label>
   <div class="input-group">
-    <textarea placeholder="{{'MODULE SALES ENTER VALUE'}} {{stepItem.title}}" class="form-control"
+    <textarea placeholder="{{'Enter value '}} {{stepItem.title}}" class="form-control"
               id="{{stepItem.tag}}" name="{{stepItem.tag}}" [formControl]="formControl">
         </textarea>
     <div *ngIf="formControl?.invalid && (formControl?.dirty || formControl?.touched)" class="invalid-feedback d-block">
       <div *ngIf="formControl?.errors.required">
-        {{stepItem.title}} {{'MODULE SALES IS REQUIRED'}}
+        {{stepItem.title}} {{'is required'}}
       </div>
       <div *ngIf="formControl?.errors.minlength || formControl?.errors.maxlength">
-        {{stepItem.title}} {{'MODULE SALES LENGTH IS OUT OF RANGE'}}
+        {{stepItem.title}} {{'length is out of range'}}
       </div>
       <div *ngIf="formControl.errors.validationMessage">
         {{formControl.errors.validationMessage}}

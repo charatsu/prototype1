@@ -1,7 +1,7 @@
 <div [formGroup]="formControl">
   <div class="form-group c-form-group">
     <label class="c-form-label" for="startDate">
-      {{'MODULE SALES START DATE'}}
+      {{'Start Date'}}
       <span class="field-required">*</span>
     </label>
     <div class="input-group input-calendar">
@@ -22,14 +22,14 @@
     <div *ngIf="startDateControl.invalid && (startDateControl.dirty || startDateControl.touched)"
          class="invalid-feedback d-block">
       <div *ngIf="startDateControl.errors.required">
-        {{'MODULE SALES START DATE REQUIRED'}}
+        {{'Start Date is required'}}
       </div>
     </div>
   </div>
 
   <div class="form-group c-form-group">
     <label class="c-form-label" for="endDate">
-      {{'MODULE SALES END DATE'}}
+      {{'End Date'}}
       <span class="field-required">*</span>
     </label>
     <div class="input-group input-calendar">
@@ -49,13 +49,13 @@
     <div *ngIf="endDateControl.invalid && (endDateControl.dirty || endDateControl.touched)"
          class="invalid-feedback d-block">
       <div *ngIf="endDateControl.errors.required">
-        {{'MODULE SALES END DATE REQUIRED'}}
+        {{'End Date is required'}}
       </div>
     </div>
   </div>
 
   <div *ngIf="formControl?.invalid && formControl?.errors && formControl?.errors?.endDateTooEarly"
        class="invalid-feedback d-block">
-    {{'MODULE SALES END DATE MIN VALIDATION'}}
+    {{'End Date must after Start Date'}}
   </div>
 </div>

@@ -6,7 +6,7 @@
   <div class="input-group input-calendar">
     <input [owlDateTime]="dtDate"
            [owlDateTimeTrigger]="dtDate"
-           placeholder="{{'MODULE SALES ENTER VALUE'}} {{stepItem.title}}"
+           placeholder="{{'enter value'}} {{stepItem.title}}"
            class="form-control"
            dataType="string" id="{{stepItem.tag}}"
            #theDate
@@ -25,10 +25,10 @@
   <owl-date-time #dtDate [pickerType]="'calendar'" [disabled]="isDisabled"></owl-date-time>
   <div *ngIf="formControl?.invalid && (formControl?.dirty || formControl?.touched)" class="invalid-feedback d-block">
     <div *ngIf="formControl?.errors?.required">
-      {{'MODULE SALES START DATE REQUIRED'}}
+      {{'start date is required'}}
     </div>
     <div *ngIf="formControl?.errors?.minDate || formControl?.errors?.maxDate">
-      {{stepItem.title}} {{'MODULE SALES IS OUT OF RANGE'}}
+      {{stepItem.title}} {{'is out of range'}}
     </div>
     <div *ngIf="formControl?.errors?.validationMessage">
       {{formControl?.errors?.validationMessage}}

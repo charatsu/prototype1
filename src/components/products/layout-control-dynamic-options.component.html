@@ -4,14 +4,14 @@
         <span class="field-required" *ngIf="isRequired">*</span>
     </label>
     <select class="form-control" [formControl]="formControl" id="{{stepItem.tag}}" [loading]="stepItem.sourceLookup === []"
-               loadingText="{{'MODULE SALES LOADING STATUS'}}">
+               loadingText="{{'loading'}}">
         <option *ngFor="let item of stepItem.sourceLookup" [value]="item?.value">
             {{item?.display}}
         </option>
     </select>
     <div *ngIf="formControl?.invalid && (formControl.dirty || formControl.touched)" class="invalid-feedback d-block">
         <div *ngIf="formControl.errors.required">
-            {{stepItem.title}} {{'MODULE SALES IS REQUIRED'}}
+            {{stepItem.title}} {{'is required'}}
         </div>
         <div *ngIf="formControl.errors.validationMessage">
             {{formControl.errors.validationMessage}}

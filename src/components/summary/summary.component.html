@@ -1,0 +1,11 @@
+<div class="text-center">
+    <h3>Payment Complete</h3>
+    <h5>
+        Payment of {{quote?.data.attributes.annualPremium.total.formattedAmount}} has been received.
+        Policy #{{quote?.data.attributes.reference}} has been issued.
+    </h5>
+    <h5>
+        Click below button to access the Policy document
+    </h5>
+    <button *ngIf="document" class="btn btn-primary w-25 align-self-center" (click)="viewDocument()">View Document</button>
+</div>
