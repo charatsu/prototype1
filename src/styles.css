@@ -8,7 +8,7 @@ body{
 label.legend{
   font-size: calc(1.275rem + .3vw);
   margin-bottom: 12px;
-  color: #17a2b8;
+  /*color: #17a2b8;*/
 }
 
 .form-flex-row{
@@ -30,4 +30,18 @@ label.legend{
 }
 .c-form-group .c-form-label span.field-required{
   color: red;
+}
+
+.expandable label.legend, .expanded label.legend{
+  font-size: 1rem;
+}
+
+.btn-icon-send{
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.btn-icon-send:hover{
+  /*color: #007bff;*/
+  background-color: #007bff;
+  color: white;
 }
