@@ -1,0 +1,23 @@
+<div class="form-group" *ngIf="isShow">
+    <label for="{{stepItem.tag}}">
+        {{stepItem.title}}
+        <span *ngIf="isRequired">*</span>
+    </label>
+    <select [formControl]="formControl" id="{{stepItem.tag}}" [loading]="stepItem.sourceLookup === []"
+               loadingText="{{'MODULE SALES LOADING STATUS'}}">
+        <option *ngFor="let item of stepItem.sourceLookup" value="item?.value">
+            {{item?.display}}
+        </option>
+    </select>
+    <div *ngIf="formControl?.invalid && (formControl.dirty || formControl.touched)" class="invalid-feedback d-block">
+        <div *ngIf="formControl.errors.required">
+            {{stepItem.title}} {{'MODULE SALES IS REQUIRED'}}
+        </div>
+        <div *ngIf="formControl.errors.validationMessage">
+            {{formControl.errors.validationMessage}}
+        </div>
+    </div>
+    <div *ngIf="validationMessage" class="invalid-feedback d-block">
+        <span style="white-space: pre-line">{{validationMessage}}</span>
+    </div>
+</div>

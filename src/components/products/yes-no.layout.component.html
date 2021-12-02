@@ -1,0 +1,24 @@
+<div class="form-group" *ngIf="isShow">
+  <label for="{{stepItem.tag}}">
+    {{stepItem.title}}
+    <span *ngIf="isRequired">*</span>
+  </label>
+  <div class="input-group">
+    <select class="form-control" id="{{stepItem.tag}}" [formControl]="formControl">
+      <option [ngValue]="item.value" *ngFor="let item of options">
+        {{item?.displayValue}}
+      </option>
+    </select>
+  </div>
+  <div *ngIf="formControl?.invalid && (formControl?.dirty || formControl?.touched)" class="invalid-feedback d-block">
+    <div *ngIf="formControl?.errors.required">
+      {{stepItem.title}} {{'MODULE SALES IS REQUIRED'}}
+    </div>
+    <div *ngIf="formControl.errors.validationMessage">
+      {{formControl.errors.validationMessage}}
+    </div>
+  </div>
+  <div *ngIf="validationMessage" class="invalid-feedback d-block">
+    <span style="white-space: pre-line">{{validationMessage}}</span>
+  </div>
+</div>

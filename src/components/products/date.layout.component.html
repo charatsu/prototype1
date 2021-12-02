@@ -1,0 +1,40 @@
+<div class="form-group" *ngIf="isShow">
+  <label for="{{stepItem.tag}}">
+    {{stepItem.title}}
+    <span *ngIf="isRequired">*</span>
+  </label>
+  <div class="input-group input-calendar">
+    <input [owlDateTime]="dtDate"
+           [owlDateTimeTrigger]="dtDate"
+           placeholder="{{'MODULE SALES ENTER VALUE'}} {{stepItem.title}}"
+           class="form-control"
+           dataType="string" id="{{stepItem.tag}}"
+           #theDate
+           [(ngModel)]="dateModel"
+           [ngModelOptions]="{standalone: true}"
+           (dateTimeChange)="onDateChanged($event.value, true)"
+           [disabled]="isDisabled">
+    <div class="input-group-append">
+      <span class="input-group-text p-0">
+        <button class="btn btn-transparent" (click)="theDate.click()">
+          <i class="fal fa-calendar"></i>
+        </button>
+      </span>
+    </div>
+  </div>
+  <owl-date-time #dtDate [pickerType]="'calendar'" [disabled]="isDisabled"></owl-date-time>
+  <div *ngIf="formControl?.invalid && (formControl?.dirty || formControl?.touched)" class="invalid-feedback d-block">
+    <div *ngIf="formControl?.errors?.required">
+      {{'MODULE SALES START DATE REQUIRED'}}
+    </div>
+    <div *ngIf="formControl?.errors?.minDate || formControl?.errors?.maxDate">
+      {{stepItem.title}} {{'MODULE SALES IS OUT OF RANGE'}}
+    </div>
+    <div *ngIf="formControl?.errors?.validationMessage">
+      {{formControl?.errors?.validationMessage}}
+    </div>
+  </div>
+  <div *ngIf="validationMessage" class="invalid-feedback d-block">
+    <span style="white-space: pre-line">{{validationMessage}}</span>
+  </div>
+</div>

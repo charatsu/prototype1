@@ -1,0 +1,39 @@
+<div class="form-group" *ngIf="isShow">
+  <label for="{{stepItem.tag}}">
+    {{stepItem.title}}
+    <span *ngIf="isRequired">*</span>
+  </label>
+  <div class="input-group {{addonClass}}">
+    <i *ngIf="unit.length > 0" class="addon">{{unit}}</i>
+    <input 
+      *ngIf="integerOnly"
+      type="number"
+      placeholder="{{'MODULE SALES ENTER VALUE'}} {{stepItem.title}}"
+      class="form-control"
+      id="{{stepItem.tag}}"
+      [formControl]="formControl"
+      (keypress)="checkInteger($event)">
+
+    <input
+      *ngIf="!integerOnly"
+      type="number"
+      placeholder="{{'MODULE SALES ENTER VALUE'}} {{stepItem.title}}"
+      class="form-control"
+      id="{{stepItem.tag}}"
+      [formControl]="formControl">
+  </div>
+  <div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)" class="invalid-feedback d-block">
+    <div *ngIf="formControl.errors.required">
+      {{stepItem.title}} {{'MODULE SALES IS REQUIRED'}}
+    </div>
+    <div *ngIf="formControl.errors.min || formControl.errors.max">
+      {{stepItem.title}} {{'MODULE SALES IS OUT OF RANGE'}}
+    </div>
+    <div *ngIf="formControl.errors.validationMessage">
+      {{formControl.errors.validationMessage}}
+    </div>
+  </div>
+  <div *ngIf="validationMessage" class="invalid-feedback d-block">
+    <span style="white-space: pre-line">{{validationMessage}}</span>
+  </div>
+</div>

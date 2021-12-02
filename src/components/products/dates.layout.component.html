@@ -1,0 +1,61 @@
+<div [formGroup]="formControl">
+  <div class="form-group">
+    <label for="startDate">
+      {{'MODULE SALES START DATE'}}
+      <span>*</span>
+    </label>
+    <div class="input-group input-calendar">
+      <input [owlDateTime]="dtStartDate" [owlDateTimeTrigger]="dtStartDate" placeholder="Date Time" class="form-control"
+             id="startDate" [(ngModel)]="startDateModel" [ngModelOptions]="{standalone: true}"
+             (dateTimeChange)="onStartDateChanged($event.value)" [disabled]="hasEffective || coverageContinuation"
+             #startDate>
+      <div class="input-group-append">
+        <span class="input-group-text p-0">
+          <button class="btn btn-transparent" (click)="startDate.click()">
+            <i class="fal fa-calendar"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+    <owl-date-time #dtStartDate [pickerType]="'calendar'">
+    </owl-date-time>
+    <div *ngIf="startDateControl.invalid && (startDateControl.dirty || startDateControl.touched)"
+         class="invalid-feedback d-block">
+      <div *ngIf="startDateControl.errors.required">
+        {{'MODULE SALES START DATE REQUIRED'}}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="endDate">
+      {{'MODULE SALES END DATE'}}
+      <span>*</span>
+    </label>
+    <div class="input-group input-calendar">
+      <input [owlDateTime]="dtEndDate" [owlDateTimeTrigger]="dtEndDate" placeholder="Date Time"
+             [(ngModel)]="endDateModel" [ngModelOptions]="{standalone: true}"
+             (dateTimeChange)="onEndDateChanged($event.value)" class="form-control"
+             id="endDate" #endDate>
+      <div class="input-group-append">
+        <span class="input-group-text p-0">
+          <button class="btn btn-transparent" (click)="endDate.click()">
+            <i class="fal fa-calendar"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+    <owl-date-time #dtEndDate [pickerType]="'calendar'"></owl-date-time>
+    <div *ngIf="endDateControl.invalid && (endDateControl.dirty || endDateControl.touched)"
+         class="invalid-feedback d-block">
+      <div *ngIf="endDateControl.errors.required">
+        {{'MODULE SALES END DATE REQUIRED'}}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="formControl?.invalid && formControl?.errors && formControl?.errors?.endDateTooEarly"
+       class="invalid-feedback d-block">
+    {{'MODULE SALES END DATE MIN VALIDATION'}}
+  </div>
+</div>
