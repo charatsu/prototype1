@@ -1,44 +1,46 @@
-<div class="text-center">
-    <h3>Personal Detail</h3>
+<div class="container">
+    <h3 class="text-center mb-4">Personal Detail</h3>
     <div class="row">
-        <div class="col">
-            <h5>Full Name</h5>
+        <div class="col-6 text-right">
+            <h6>Full Name</h6>
         </div>
-        <div class="col">
-            <h6>{{personalDetail?.Data.FullName}}</h6>
+        <div class="col-6">
+            <h6 class="font-weight-bold">{{personalDetail?.Data.FullName}}</h6>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <h5>NRIC / Passport</h5>
+        <div class="col-6 text-right">
+            <h6>NRIC / Passport</h6>
         </div>
-        <div class="col">
-            <h6>{{personalDetail?.Data.SSN ?? 'S2175802Z'}}</h6>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h5>Place of Residence</h5>
-        </div>
-        <div class="col">
-            <h6>{{personalDetail?.Data.Country}}</h6>
+        <div class="col-6">
+            <h6 class="font-weight-bold">{{personalDetail?.Data.SSN ?? 'S2175802Z'}}</h6>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <h5>Mobile Number</h5>
+        <div class="col-6 text-right">
+            <h6>Place of Residence</h6>
         </div>
-        <div class="col">
-            <h6>{{personalDetail?.Data.Phones[0].Number}}</h6>
+        <div class="col-6">
+            <h6 class="font-weight-bold">{{personalDetail?.Data.Country}}</h6>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <h5>E-mail Address</h5>
+        <div class="col-6 text-right">
+            <h6>Mobile Number</h6>
         </div>
-        <div class="col">
-            <h6>{{personalDetail?.Data.Emails[0].Address}}</h6>
+        <div class="col-6">
+            <h6 class="font-weight-bold">{{personalDetail?.Data.Phones[0].Number}}</h6>
         </div>
     </div>
+    <div class="row">
+        <div class="col-6 text-right">
+            <h6>E-mail Address</h6>
+        </div>
+        <div class="col-6">
+            <h6 class="font-weight-bold">{{personalDetail?.Data.Emails[0].Address}}</h6>
+        </div>
+    </div>
+  <div class="text-center mt-4">
     <button class="btn btn-primary w-25 align-self-center" (click)="next()">Next</button>
+  </div>
 </div>
