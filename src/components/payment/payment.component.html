@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text-center container">
     <div *ngIf="!error">
         <h3>Payment Detail</h3>
         <h4>{{quote?.data.attributes.productName}}</h4>
@@ -49,6 +49,18 @@
             <h6 class="text-danger">{{item.displayText}}</h6>
         </div>
     </div>
+    <div class="row">
+            <div class="col">
+                <h5>Select Payment Sethods</h5>
+            </div>
+            <div class="col">
+                <select class="w-100 form-control">
+                    <option value="1">Bank Account</option>
+                    <option value="2">Visa</option>
+                    <option value="3">Mastercard</option>
+                </select>
+            </div>
+    </div>
 
-    <button *ngIf="!error" class="btn btn-primary w-25 align-self-center" (click)="Purchase()">Purchase</button>
+    <button *ngIf="!error" class="btn btn-primary w-25 align-self-center my-5" (click)="Purchase()">Purchase</button>
 </div>

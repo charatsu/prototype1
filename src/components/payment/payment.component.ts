@@ -49,41 +49,45 @@ export class PaymentComponent implements OnInit {
       setTimeout(() => res(true), value);
     })
   }
-  async Purchase() {    
-    let completeQuote = await this.saleService.completeQuote({
-      data: {
-        attributes: {
-          quoteId: this.id
-        },
-        type: 'completeQuoteRequests'
-      }
-    })
-    let quote = await this.saleService.acceptanceQuote({
-      data: {
-        attributes: {
-          quoteId: this.id,
-          policyHolderId: '303dc87f-c7a8-473b-84c6-570174f3863c',
-          acceptedVersion: completeQuote.data.attributes.version,
-          paymentFrequency: 'Annually',
-          paymentMethod: 'Invoice',
-          policyHolderData: {
-            id: this.personalDetail.Id,
-            nin: this.personalDetail.SSN,
-            reference: this.personalDetail.Reference,
-            name: this.personalDetail.FullName,
-            dateOfBirth: this.personalDetail.DateOfBirth,
-            addrLine1: this.personalDetail.Addresses.find(i => i !== undefined)?.Address,
-            addrPostCode: this.personalDetail.Addresses.find(i => i !== undefined)?.PostCode,
-            city: this.personalDetail.Addresses.find(i => i !== undefined)?.City,
-            phoneNumber: this.personalDetail.Phones.find(i => i !== undefined)?.Number,
-            email: this.personalDetail.Emails.find(i => i !== undefined)?.Address,
-            organizationContext: this.personalDetail.OrgContextId
-          }
-        },
-        type: 'acceptanceRequests'
-      }
-    })
-    this.router.navigate(['/summary'], {queryParams: {id: this.id}});
+  async Purchase() {
+    try {
+      let completeQuote = await this.saleService.completeQuote({
+        data: {
+          attributes: {
+            quoteId: this.id
+          },
+          type: 'completeQuoteRequests'
+        }
+      })
+      let quote = await this.saleService.acceptanceQuote({
+        data: {
+          attributes: {
+            quoteId: this.id,
+            policyHolderId: '303dc87f-c7a8-473b-84c6-570174f3863c',
+            acceptedVersion: completeQuote.data.attributes.version,
+            paymentFrequency: 'Annually',
+            paymentMethod: 'Invoice',
+            policyHolderData: {
+              id: this.personalDetail.Id,
+              nin: this.personalDetail.SSN,
+              reference: this.personalDetail.Reference,
+              name: this.personalDetail.FullName,
+              dateOfBirth: this.personalDetail.DateOfBirth,
+              addrLine1: this.personalDetail.Addresses.find(i => i !== undefined)?.Address,
+              addrPostCode: this.personalDetail.Addresses.find(i => i !== undefined)?.PostCode,
+              city: this.personalDetail.Addresses.find(i => i !== undefined)?.City,
+              phoneNumber: this.personalDetail.Phones.find(i => i !== undefined)?.Number,
+              email: this.personalDetail.Emails.find(i => i !== undefined)?.Address,
+              organizationContext: this.personalDetail.OrgContextId
+            }
+          },
+          type: 'acceptanceRequests'
+        }
+      })
+      this.router.navigate(['/summary'], {queryParams: {id: this.id}});  
+    } catch(e) {
+      alert('error happend');
+    }
 
   }
 }

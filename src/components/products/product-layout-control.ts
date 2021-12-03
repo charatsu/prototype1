@@ -49,7 +49,7 @@ export abstract class ProductLayoutControl implements LayoutControl, OnInit, OnD
     }, 300);
   }
 
-  updateModel(model: ProductLayoutModelInterface): void {
+  updateModel(model: ProductLayoutModelInterface): void {    
     this.jsModel = model;
     this.setInitialStatuses();
     this.updateValidationErrors();

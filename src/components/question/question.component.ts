@@ -31,13 +31,12 @@ export class QuestionComponent implements OnInit {
     private saleService: SaleService,
     private productService: ProductService,
     private router: Router) { }
-  html = '';
-  test = '<p>aaaa</p>';
   productId = '';
   options:any = {
     addSubmit: false,
   };
   model: any = {};
+  answer: any = {};
   schema: any = {};
   layout: any = {};
   Period: any = {
@@ -71,8 +70,10 @@ export class QuestionComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id == null || this.id == 'PA') {
       this.productId = 'product-ec7b818d-2b27-08d9-6f58-3d38e85eb6cb';
+      this.answer = PAmodel;
     } else if (this.id == 'CTPL') {
       this.productId = 'product-1731d8ec-2b30-08d9-9140-094e89f102c5';
+      this.answer = CTPLmodel;
     }
     this.getProductDetail();
   }
@@ -84,7 +85,7 @@ export class QuestionComponent implements OnInit {
   }
   onSubmit = async () => {
     // console.log(this.model);
-    // console.log(this.jsonForm.value);
+    console.log(this.jsonForm);
     
     let data = this.jsonForm.value;
     const period = { start: this.Period.startDate, end: this.Period.endDate };
@@ -169,7 +170,7 @@ export class QuestionComponent implements OnInit {
         end: moment().add(1, 'year').add(-1, 'day').toISOString()
       },
       currencyCode: 'SGD',
-      answers: {},
+      answers: this.answer,
     };
     this.attribute = {
       salesChannel: productDetail.data.relationships.salesChannel.data[0].id,
