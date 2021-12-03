@@ -1,45 +1,45 @@
-<div class="text-center">
+<div class="container">
     <div *ngIf="!error">
-        <h3>Payment Detail</h3>
-        <h4>{{quote?.data.attributes.productName}}</h4>
+        <h3 class="text-center">Payment Detail</h3>
+        <h4 class="text-center mb-4">{{quote?.data.attributes.productName}}</h4>
         <div class="row">
-            <div class="col">
-                <h5>Premium Amount</h5>
+            <div class="col-6 text-right">
+                <h6>Premium Amount</h6>
             </div>
-            <div class="col">
-                <h6>{{quote?.data.attributes.annualPremium.total.formattedAmount}}</h6>
+            <div class="col-6">
+                <h6 class="font-weight-bold">{{quote?.data.attributes.annualPremium.total.formattedAmount}}</h6>
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <h5>Policy Start Date</h5>
+            <div class="col-6 text-right">
+                <h6>Policy Start Date</h6>
             </div>
-            <div class="col">
-                <h6>{{quote?.data.attributes.period.start}}</h6>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h5>Policy End Date</h5>
-            </div>
-            <div class="col">
-                <h6>{{quote?.data.attributes.period.start}}</h6>
+            <div class="col-6">
+                <h6 class="font-weight-bold">{{quote?.data.attributes.period.start}}</h6>
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <h5>Initual Payment</h5>
+            <div class="col-6 text-right">
+                <h6>Policy End Date</h6>
             </div>
-            <div class="col">
-                <h6>{{quote?.data.attributes.annualPremium.total.formattedAmount}}</h6>
+            <div class="col-6">
+                <h6 class="font-weight-bold">{{quote?.data.attributes.period.start}}</h6>
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <h5>Subsequent Payments</h5>
+            <div class="col-6 text-right">
+                <h6>Initual Payment</h6>
             </div>
-            <div class="col">
-                <h6>{{quote?.data.attributes.annualPremium.total.formattedAmount}}</h6>
+            <div class="col-6">
+                <h6 class="font-weight-bold">{{quote?.data.attributes.annualPremium.total.formattedAmount}}</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right">
+                <h6>Subsequent Payments</h6>
+            </div>
+            <div class="col-6">
+                <h6 class="font-weight-bold">{{quote?.data.attributes.annualPremium.total.formattedAmount}}</h6>
             </div>
         </div>
     </div>
@@ -50,5 +50,7 @@
         </div>
     </div>
 
-    <button *ngIf="!error" class="btn btn-primary w-25 align-self-center" (click)="Purchase()">Purchase</button>
+    <div class="text-center mt-4">
+      <button *ngIf="!error" class="btn btn-primary w-25 align-self-center" (click)="Purchase()">Purchase</button>
+    </div>
 </div>
