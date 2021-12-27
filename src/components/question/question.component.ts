@@ -20,6 +20,7 @@ import { TextNumberLayoutComponent } from '../products/text-number.layout.compon
 import { LabelLayoutComponent } from '../products/label.layout.component';
 import { LayoutDynamicSetOfOptionsControlComponent } from '../products/layout-control-dynamic-options.component';
 import { JsonSchemaFormComponent } from '@ajsf/core';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -69,12 +70,12 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id == null || this.id == 'PA') {
-      this.productId = 'product-ec7b818d-2b27-08d9-6f58-3d38e85eb6cb';
+      this.productId = environment.productPA;
       this.answer = PAmodel;
     } else if (this.id == 'CTPL') {
-      this.productId = 'product-1731d8ec-2b30-08d9-9140-094e89f102c5';
+      this.productId = environment.productCTPL;
       this.answer = CTPLmodel;
-    }
+    }    
     this.getProductDetail();
   }
   onDateChange(value: { value: any; }, att: string | number) {

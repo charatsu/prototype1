@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { CustomerService } from 'src/services/customer.service';
 import { DocumentService } from 'src/services/document.service';
 import { SaleService } from 'src/services/sale.service';
@@ -63,7 +64,7 @@ export class PaymentComponent implements OnInit {
         data: {
           attributes: {
             quoteId: this.id,
-            policyHolderId: '303dc87f-c7a8-473b-84c6-570174f3863c',
+            policyHolderId: environment.userId,
             acceptedVersion: completeQuote.data.attributes.version,
             paymentFrequency: 'Annually',
             paymentMethod: 'Invoice',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { CustomerService } from 'src/services/customer.service';
 import { DocumentService } from 'src/services/document.service';
 import { SaleService } from 'src/services/sale.service';
@@ -22,7 +23,7 @@ export class ReviewComponent implements OnInit {
     this.id = this.route.snapshot.queryParamMap.get('id');
 
     // let id = this.route.snapshot.paramMap.get('id');
-    this.personalDetail = await this.customerService.getCustomerDetail('303dc87f-c7a8-473b-84c6-570174f3863c');
+    this.personalDetail = await this.customerService.getCustomerDetail(environment.userId);
   }
   next(){
     this.router.navigate(['/payment'], {queryParams: {id: this.id}});
